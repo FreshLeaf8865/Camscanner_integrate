@@ -10,7 +10,10 @@
 #import "ViewController.h"
 #import "LoginVC.h"
 #import "Define.h"
-
+#import "ISBlockActionSheet.h"
+#import <QuartzCore/CALayer.h>
+#import "CSPdfPreviewViewController.h"
+#import <CamScannerOpenAPIFramework/CamScannerOpenAPIController.h>
 
 @interface AppDelegate ()
 
@@ -27,6 +30,37 @@
     
     return YES;
 }
+    
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+    {
+        if ([CamScannerOpenAPIController isSourceApplicationCamScanner:sourceApplication])
+        {
+            
+            NSDictionary *userInfo = [CamScannerOpenAPIController userInfoFromURL:url andSourceApplication:sourceApplication];
+            NSData *jpegData = [CamScannerOpenAPIController getJPEGDataFromCamScannerWithUserInfo:userInfo];
+            UIImage *image = [UIImage imageWithData:jpegData];
+            
+            NSData *pdfData = [CamScannerOpenAPIController getPDFDataFromCamScannerWithUserInfo:userInfo];
+            
+            ViewController *controller = (ViewController *)[self.window rootViewController];
+            //[controller updateImageViewWithImage:image];
+            //[controller updatePdfFileWithData:pdfData];
+            
+            if( image )
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"onReceiveImageFromCamScannar" object:image];
+            }
+            
+            NSString *returnCode = [userInfo objectForKey:kReturnCode];
+            if (![returnCode isEqualToString:@"6000"])
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Code:%@", returnCode] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+        return YES;
+    }
+    
 -(void)changeNavi{
     ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];
     if (![[USER_DEFAULT objectForKey:@"isLogedin"] isEqualToString:@"yes"]) {

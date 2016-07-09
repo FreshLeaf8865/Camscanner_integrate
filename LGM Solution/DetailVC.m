@@ -28,6 +28,14 @@
 #import "MBProgressHUD.h"
 #import "ImageSendObj.h"
 
+#import "ISBlockActionSheet.h"
+#import <QuartzCore/CALayer.h>
+#import "CSPdfPreviewViewController.h"
+#import <CamScannerOpenAPIFramework/CamScannerOpenAPIController.h>
+
+#define AppKey @"4M2DybKhBFSeEFYJr9QyL6yQ"
+//#define PDFResultFilePath [NSTemporaryDirectory() stringByAppendingPathComponent:@"temp.pdf"]
+
 @interface DetailVC ()
 
 @end
@@ -88,8 +96,19 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onReceiveImageFromCamScannar:)
+                                                 name:@"onReceiveImageFromCamScannar"
+                                               object:nil];
+    
     html = [NSMutableString stringWithString: [NSString stringWithFormat:@"Dear %@<br/><br/>", _objDetail.CompanyName]];
 }
+    
+- (void)onReceiveImageFromCamScannar:(NSNotification *)note
+{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"HaveImage" object:note.object userInfo:nil];
+}
+    
 -(void)drawViews : (NSMutableArray*)arrForms tagOfParrentControl:(int)tagOfParrentControl{
     for (FormObj *objForm in arrForms) {
         if ([objForm.type isEqualToString:@"textfield"]) {
@@ -455,9 +474,11 @@
     }
 }
 -(void)viewWillDisappear:(BOOL)animated{
+    
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:@"onReceiveImageFromCamScannar" object:nil];
 }
 - (void)keyboardWillShow:(NSNotification*)notification {
     NSDictionary *info = [notification userInfo];
@@ -626,11 +647,8 @@
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
     UIImage *image = info[UIImagePickerControllerOriginalImage];//[info objectForKey:@"UIImagePickerControllerOriginalImage"];
-//    UIImage *lowResImage = image;
-//    if ([[NSData alloc] initWithData:UIImageJPEGRepresentation(image,1.0)].length/1024.0 >=1) {
-//        lowResImage = [self imageWithImage:image scaledToWidth:1000];
-//    }
     
     for (int i = 0;i<arrPostionControls.count;i++) {
         ControlPosition *obj = [arrPostionControls objectAtIndex:i];
@@ -641,8 +659,66 @@
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"HaveImage" object:image userInfo:info];
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    //[picker dismissViewControllerAnimated:YES completion:nil];
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        NSArray *applications = [CamScannerOpenAPIController availableApplications];
+        
+        BOOL canDo = [CamScannerOpenAPIController canOpenCamScannerHD];
+        NSMutableArray *appNames = [[NSMutableArray alloc] init];
+        for (NSString *application in applications)
+        {
+            NSString *appName = [self appName:application];
+            if ([appName length] > 0)
+            {
+                [appNames addObject:appName];
+            }
+        }
+        if ([applications count] > 0)
+        {
+            ISBlockActionSheet *actionSheet = [[ISBlockActionSheet alloc] initWithTitle:@"Choose application" cancelButtonTitle:@"Cancel" cancelBlock:^{
+                
+            } destructiveButtonTitle:nil destructiveBlock:^{
+                
+            } otherButtonTitles:appNames otherButtonBlock:^(NSInteger index) {
+                [CamScannerOpenAPIController sendImage:image toTargetApplication:[applications objectAtIndex:index] appKey:AppKey subAppKey:nil];
+            }];
+            [actionSheet showInView:self.view];
+        }
+        else
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"You should install CamScanner First" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alertView show];
+        }
+    }];
 }
+
+- (NSString *) appName:(NSString *) inputName
+{
+    if ([inputName isEqualToString:CamScannerLite])
+    {
+        return @"CamScanner Free";
+    }
+    if ([inputName isEqualToString:CamScanner])
+    {
+        return @"CamScanner+";
+    }
+    if ([inputName isEqualToString:CamScannerPro])
+    {
+        return @"CamScanner Pro";
+    }
+    if ([inputName isEqualToString:CamScannerHD])
+    {
+        return @"CamScanner HD";
+    }
+    if ([inputName isEqualToString:CamScannerHDPro])
+    {
+        return @"CamScanner HD Pro";
+    }
+    return nil;
+}
+
 -(UIImage*)imageWithImage: (UIImage*) sourceImage scaledToWidth: (float) i_width
 {
     float oldWidth = sourceImage.size.width;

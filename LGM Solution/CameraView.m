@@ -34,7 +34,7 @@
         [self addSubview:lb];
         
         UIButton *bt = [[UIButton alloc] initWithFrame:CGRectMake(alignLeft, lb.frame.origin.y+lb.frame.size.height+alignTop/2, 90, heightOfTextField)];
-        [bt setTitle:@"Scan" forState:UIControlStateNormal];
+        [bt setTitle:@"Camera" forState:UIControlStateNormal];
         [bt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [bt setBackgroundImage:[UIImage imageNamed:@"bt_reset.png"] forState:UIControlStateNormal];
         [bt addTarget:self  action:@selector(myCamera) forControlEvents:UIControlEventTouchUpInside];
@@ -72,6 +72,6 @@
 -(void) getImageSuccess:(NSNotification*)notif{
     UIImage *img = notif.object;
     [image setImage:img];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"HaveImage" object:nil];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:@"HaveImage" object:nil];
 }
 @end

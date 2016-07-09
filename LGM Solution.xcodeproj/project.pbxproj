@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9788F7491B1703B80059A837 /* MTBBarcodeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9788F7481B1703B80059A837 /* MTBBarcodeScanner.m */; };
+		B197E8B11D2E253A005B0B7E /* ISBlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B197E8B01D2E253A005B0B7E /* ISBlockActionSheet.m */; };
+		B197E8B41D2E254C005B0B7E /* CSPdfPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B197E8B31D2E254C005B0B7E /* CSPdfPreviewViewController.m */; };
+		DAFF50FC1D143CBF001A4C3F /* CamScannerOpenAPIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF50FB1D143CBF001A4C3F /* CamScannerOpenAPIFramework.framework */; };
+		DAFF50FE1D144650001A4C3F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF50FD1D144650001A4C3F /* UIKit.framework */; };
 		E10022CD1AE9CF870024038E /* bkgd_tile_black.png in Resources */ = {isa = PBXBuildFile; fileRef = E10022BE1AE9CF870024038E /* bkgd_tile_black.png */; };
 		E10022CE1AE9CF870024038E /* bt_reset.png in Resources */ = {isa = PBXBuildFile; fileRef = E10022BF1AE9CF870024038E /* bt_reset.png */; };
 		E10022CF1AE9CF870024038E /* btn_check_off.png in Resources */ = {isa = PBXBuildFile; fileRef = E10022C01AE9CF870024038E /* btn_check_off.png */; };
@@ -146,6 +150,12 @@
 /* Begin PBXFileReference section */
 		9788F7471B1703B80059A837 /* MTBBarcodeScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTBBarcodeScanner.h; path = Scanners/MTBBarcodeScanner.h; sourceTree = "<group>"; };
 		9788F7481B1703B80059A837 /* MTBBarcodeScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTBBarcodeScanner.m; path = Scanners/MTBBarcodeScanner.m; sourceTree = "<group>"; };
+		B197E8AF1D2E253A005B0B7E /* ISBlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISBlockActionSheet.h; sourceTree = "<group>"; };
+		B197E8B01D2E253A005B0B7E /* ISBlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISBlockActionSheet.m; sourceTree = "<group>"; };
+		B197E8B21D2E254C005B0B7E /* CSPdfPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSPdfPreviewViewController.h; sourceTree = "<group>"; };
+		B197E8B31D2E254C005B0B7E /* CSPdfPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSPdfPreviewViewController.m; sourceTree = "<group>"; };
+		DAFF50FB1D143CBF001A4C3F /* CamScannerOpenAPIFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CamScannerOpenAPIFramework.framework; sourceTree = "<group>"; };
+		DAFF50FD1D144650001A4C3F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E10022BE1AE9CF870024038E /* bkgd_tile_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bkgd_tile_black.png; sourceTree = "<group>"; };
 		E10022BF1AE9CF870024038E /* bt_reset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_reset.png; sourceTree = "<group>"; };
 		E10022C01AE9CF870024038E /* btn_check_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_check_off.png; sourceTree = "<group>"; };
@@ -381,7 +391,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAFF50FE1D144650001A4C3F /* UIKit.framework in Frameworks */,
 				E1AADC5C1AFB49CD00704CA2 /* MobileCoreServices.framework in Frameworks */,
+				DAFF50FC1D143CBF001A4C3F /* CamScannerOpenAPIFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +414,16 @@
 				9788F7481B1703B80059A837 /* MTBBarcodeScanner.m */,
 			);
 			name = Scanner;
+			sourceTree = "<group>";
+		};
+		DAFF50FF1D144664001A4C3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DAFF50FD1D144650001A4C3F /* UIKit.framework */,
+				DAFF50FB1D143CBF001A4C3F /* CamScannerOpenAPIFramework.framework */,
+				E1AADC5B1AFB49CD00704CA2 /* MobileCoreServices.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E10022BB1AE9CF5D0024038E /* Resources */ = {
@@ -804,9 +826,9 @@
 		E1C3FD611AE9037D00C83E85 = {
 			isa = PBXGroup;
 			children = (
-				E1AADC5B1AFB49CD00704CA2 /* MobileCoreServices.framework */,
 				E1C3FD6C1AE9037D00C83E85 /* LGM Solution */,
 				E1C3FD861AE9037D00C83E85 /* LGM SolutionTests */,
+				DAFF50FF1D144664001A4C3F /* Frameworks */,
 				E1C3FD6B1AE9037D00C83E85 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -828,6 +850,10 @@
 				E10022BB1AE9CF5D0024038E /* Resources */,
 				E1C3FD711AE9037D00C83E85 /* AppDelegate.h */,
 				E1C3FD721AE9037D00C83E85 /* AppDelegate.m */,
+				B197E8AF1D2E253A005B0B7E /* ISBlockActionSheet.h */,
+				B197E8B01D2E253A005B0B7E /* ISBlockActionSheet.m */,
+				B197E8B21D2E254C005B0B7E /* CSPdfPreviewViewController.h */,
+				B197E8B31D2E254C005B0B7E /* CSPdfPreviewViewController.m */,
 				E10022DF1AE9D9370024038E /* DetailVC.h */,
 				E10022E01AE9D9370024038E /* DetailVC.m */,
 				E10022DC1AE9D6300024038E /* LoginVC.h */,
@@ -920,10 +946,10 @@
 				TargetAttributes = {
 					E1C3FD691AE9037D00C83E85 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = MJ4F4S4E5M;
 					};
 					E1C3FD821AE9037D00C83E85 = {
 						CreatedOnToolsVersion = 6.3;
-						TestTargetID = E1C3FD691AE9037D00C83E85;
 					};
 				};
 			};
@@ -1075,6 +1101,7 @@
 				E1A96D081AEE2F6F006DA82C /* NameLogo.m in Sources */,
 				E10022F91AE9DE380024038E /* GDataXMLNode.m in Sources */,
 				E1BB48C51B0308D30065ABE7 /* SBJSON.m in Sources */,
+				B197E8B11D2E253A005B0B7E /* ISBlockActionSheet.m in Sources */,
 				E1BB48F01B0308FA0065ABE7 /* UIImageView+AFNetworking.m in Sources */,
 				E1BB48EE1B0308FA0065ABE7 /* CommonUtils.m in Sources */,
 				E18BFCA61AFB1F43000D6E58 /* CameraView.m in Sources */,
@@ -1089,6 +1116,7 @@
 				E10826591AF9FD2300A78EC6 /* AddItem.m in Sources */,
 				E10022EE1AE9DBBF0024038E /* MBProgressHUD.m in Sources */,
 				E1AADC801AFB5FD100704CA2 /* ActionSheetLocalePicker.m in Sources */,
+				B197E8B41D2E254C005B0B7E /* CSPdfPreviewViewController.m in Sources */,
 				E1B54D3B1AF9CA90005C8F26 /* TimePickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1140,9 +1168,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: prashant.rastogi@gaana.com (QM26ERR97C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: prashant.rastogi@gaana.com (QM26ERR97C)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1162,6 +1192,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1183,9 +1214,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: prashant.rastogi@gaana.com (QM26ERR97C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: prashant.rastogi@gaana.com (QM26ERR97C)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1198,6 +1231,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1209,7 +1243,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: david1988126@hotmail.com (TDY34E5Y7L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -1219,8 +1257,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lxml2";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martin.lgmprojects;
 				PRODUCT_NAME = "OSCAR BY LGM Solution";
-				PROVISIONING_PROFILE = "c387c721-f7fe-4a58-b842-2e26b3ff3508";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1231,7 +1270,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: david1988126@hotmail.com (TDY34E5Y7L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -1241,8 +1284,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lxml2";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martin.lgmprojects;
 				PRODUCT_NAME = "OSCAR BY LGM Solution";
-				PROVISIONING_PROFILE = "c387c721-f7fe-4a58-b842-2e26b3ff3508";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1250,7 +1294,8 @@
 		E1C3FD911AE9037D00C83E85 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: prashant.rastogi@gaana.com (QM26ERR97C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: prashant.rastogi@gaana.com (QM26ERR97C)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1262,14 +1307,14 @@
 				INFOPLIST_FILE = "LGM SolutionTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LGM Solution.app/LGM Solution";
 			};
 			name = Debug;
 		};
 		E1C3FD921AE9037D00C83E85 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: prashant.rastogi@gaana.com (QM26ERR97C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: prashant.rastogi@gaana.com (QM26ERR97C)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1277,7 +1322,6 @@
 				INFOPLIST_FILE = "LGM SolutionTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LGM Solution.app/LGM Solution";
 			};
 			name = Release;
 		};
