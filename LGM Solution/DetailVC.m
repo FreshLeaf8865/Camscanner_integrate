@@ -644,6 +644,23 @@
     
     return;
 }
+- (CameraView*)getCurrentCamView
+{
+    CameraView *cameraView = nil;
+    for (id tempView in scrollView.subviews)
+    {
+        //cameraView = [scrollView viewWithTag:obj.tagOfControl];
+        if([tempView isKindOfClass:[CameraView class]])
+        {
+            cameraView = (CameraView*)tempView;
+            if(cameraView.tag == tagOFImage)
+            {
+                return cameraView;
+            }
+        }
+    }
+    return nil;
+}
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
@@ -658,8 +675,14 @@
         }
     }
     
+    
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"HaveImage" object:image userInfo:info];
     //[picker dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    //MTPL
+    CameraView *cameraView = [self getCurrentCamView];
     
     [picker dismissViewControllerAnimated:YES completion:^{
         UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -682,6 +705,8 @@
             } destructiveButtonTitle:nil destructiveBlock:^{
                 
             } otherButtonTitles:appNames otherButtonBlock:^(NSInteger index) {
+                NSLog(@"App selected");
+                [[NSNotificationCenter defaultCenter] addObserver:cameraView selector:@selector(getImageSuccess:) name:@"HaveImage" object:nil];
                 [CamScannerOpenAPIController sendImage:image toTargetApplication:[applications objectAtIndex:index] appKey:AppKey subAppKey:nil];
             }];
             [actionSheet showInView:self.view];

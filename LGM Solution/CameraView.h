@@ -14,4 +14,5 @@
 }
 -(id)initWithRect:(CGRect)rect label:(NSString*)label;
 @property (nonatomic, retain) id<CameraViewDelegate> delegate;
+-(void) getImageSuccess:(NSNotification*)notif;
 @end

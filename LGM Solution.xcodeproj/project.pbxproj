@@ -946,7 +946,7 @@
 				TargetAttributes = {
 					E1C3FD691AE9037D00C83E85 = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = MJ4F4S4E5M;
+						DevelopmentTeam = 8DV7949L48;
 					};
 					E1C3FD821AE9037D00C83E85 = {
 						CreatedOnToolsVersion = 6.3;
@@ -1257,7 +1257,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = com.martin.lgmprojects;
+				PRODUCT_BUNDLE_IDENTIFIER = com.martin.lgmproject;
 				PRODUCT_NAME = "OSCAR BY LGM Solution";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1284,7 +1284,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = com.martin.lgmprojects;
+				PRODUCT_BUNDLE_IDENTIFIER = com.martin.lgmproject;
 				PRODUCT_NAME = "OSCAR BY LGM Solution";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

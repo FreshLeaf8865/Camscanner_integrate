@@ -72,6 +72,7 @@
 -(void) getImageSuccess:(NSNotification*)notif{
     UIImage *img = notif.object;
     [image setImage:img];
-    //[[NSNotificationCenter defaultCenter] removeObserver:self name:@"HaveImage" object:nil];
+    ////MTPL
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"HaveImage" object:nil];
 }
 @end
