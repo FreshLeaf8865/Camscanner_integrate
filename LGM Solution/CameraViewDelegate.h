@@ -10,4 +10,7 @@
 @protocol CameraViewDelegate <NSObject>
 - (void)openCamera:(UIView*)view;
 - (void)openGellary:(UIView*)view;
+
+//MTPL: To set cam scan image for send mail
+-(void)setCamScannerImage: (UIImage *)image;
 @end

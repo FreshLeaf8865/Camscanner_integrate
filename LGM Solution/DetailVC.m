@@ -620,6 +620,19 @@
     tagOFImage = (int)view.tag;
     [self ShouldStartCamera];
 }
+
+-(void)setCamScannerImage: (UIImage *)image{
+    //Will set cam scanner image for submit
+    for (int i = 0;i<arrPostionControls.count;i++) {
+        ControlPosition *obj = [arrPostionControls objectAtIndex:i];
+        if ([obj.classOfControl isEqual:[CameraView class]] && obj.tagOfControl == tagOFImage) {
+            obj.image = image;
+            break;
+        }
+    }
+
+}
+
 -(void) ShouldStartCamera{
     UIImagePickerController * cameraUI = [[UIImagePickerController alloc] init];
     cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;

@@ -71,8 +71,14 @@
 }
 -(void) getImageSuccess:(NSNotification*)notif{
     UIImage *img = notif.object;
+
     [image setImage:img];
+
     ////MTPL
+    [_delegate setCamScannerImage:img];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"HaveImage" object:nil];
 }
+
+
+
 @end
